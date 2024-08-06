@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-
+import models
 class BaseModel:
     def __init__(self, *args, **kwargs):
         time_format = "%Y-%m-%dT%H:%M:%S.%f"
@@ -24,6 +24,7 @@ class BaseModel:
 
         """
         self.updated_at = datetime.now()
+        models.storage.save(self)
 
     def to_dict(self):
         """
